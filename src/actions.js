@@ -1,15 +1,35 @@
+export const disabled = ()=>{
+    
+    return {type:"DISABLED"}
+
+}
+
+export const UnDisabled = () =>{
+
+    return {type: "UNDISABLED" }
+}
 
 
-export const pressMe = ()=>{
+export const disabledWithDelay = ()=>{
+    
+    return function(dispatch){
+    
+        dispatch(disabled())
+    
+    
+    };
+
+
+}
+
+export const UnDisabledWithDelay = ()=>{
 
 
     return function(dispatch) {
 
-        setTimeout(()=>{
-            button.disabled = true;
-            dispatch(pressMe())
-        }, 2000)
-               
-    };
 
+        dispatch(UnDisabled())
+
+        
+    };
 }
