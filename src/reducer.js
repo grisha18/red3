@@ -1,15 +1,28 @@
-import button from './App'
+// import {ourButton} from './App'
 
-export const reducer = (state, action)=>{
+
+
+
+const initialState = {
+    buttonDisabled: false,
+    loginButtonDisabled: false
+};
+
+
+
+export const reducer = (state=initialState, action)=>{
     switch(action.type){
         case "DISABLED":
             const newState = {...state};
-            button.disabled = true;
+            newState.buttonDisabled = true;
             return newState;
         case "UNDISABLED":
-            button.disabled = false;
+            // button.disabled = false; // доступ к дом из реакта нужно получать через хук useRef
+            return state;
         default:
             return state;
     }
 
 }
+
+

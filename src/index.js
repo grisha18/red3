@@ -7,11 +7,11 @@ import {createStore, compose, applyMiddleware} from 'redux';
 import {Provider} from "react-redux"
 import thunk from "redux-thunk";
 import {reducer} from './reducer';
+import {Login} from "./OurNewForm";
 
 
 
-
-const store = createStore(compose( applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
+const store = createStore(reducer, compose( applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
 
 
 
@@ -19,6 +19,7 @@ const store = createStore(compose( applyMiddleware(thunk), window.__REDUX_DEVTOO
 ReactDOM.render(
   <Provider store={store}>
     <App />
+    <Login/>
   </Provider>,
   document.getElementById('root')
 );
