@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef, useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
@@ -13,13 +13,32 @@ import {Login} from "./OurNewForm";
 
 const store = createStore(reducer, compose( applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()));
 
+const LoginForm = ()=>{
 
+  const [number, setNumber] = useState(1);
+  
+  const colorRef = useRef(null);
+  
+  return (
+    <>
+    <input ref={colorRef} type="color"></input>
+    <button onClick={()=>setNumber(number+1)}>Opat postavit odin</button>
+    {colorRef.current ? <Login colorRef={colorRef}  initialNumber={1}/> : <></>}
+    </>
+  )
+
+}
+
+
+// осознать и тезисно записать в тетрадь 
+// https://learn.javascript.ru/destructuring-assignment
 
 
 ReactDOM.render(
   <Provider store={store}>
     <App />
-    <Login/>
+    <LoginForm/>
+    
   </Provider>,
   document.getElementById('root')
 );
